@@ -10,6 +10,8 @@ const controls = [
   {label: 'Meat', type: 'meat'}
 ];
 
+
+
 const BuildControls = (props) => {
   return (
     <div className={classes.BuildControls}>
@@ -18,9 +20,11 @@ const BuildControls = (props) => {
           label={ctr.label}
           key={ctr.label}
           added={() => props.ingredientAdded(ctr.type)}/>
-      ))};
+      ))}
     </div>
   )
 };
+
+
 
 export default BuildControls;
