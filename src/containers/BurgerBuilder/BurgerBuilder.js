@@ -59,18 +59,20 @@ class BurgerBuilder extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.state.totalPrice);
-  }
 
   render() {
+    const disabled = {...this.state.ingredients}
+    for (let key in disabled) {
+      disabled[key] = disabled[key] <= 0;
+    }
     return (
       <Auxiliary>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls
           removeIngredientHandler={this.removeIngredientHandler}
           ingredientAdded={this.addIngredientHandler}
-          totalPrice={this.state.totalPrice}/>
+          totalPrice={this.state.totalPrice}
+          disabled={disabled}/>
       </Auxiliary>
 
     );

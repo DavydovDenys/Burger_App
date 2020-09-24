@@ -21,7 +21,8 @@ const BuildControls = (props) => {
           key={ctr.label}
           price={ctr.price}
           added={() => props.ingredientAdded(ctr.type)}
-          removed={() => props.removeIngredientHandler(ctr.type)}/>
+          removed={() => props.removeIngredientHandler(ctr.type)}
+          disabled={props.disabled[ctr.type]}/>
       ))}
       {/*выводим цену за товар*/}
       {/*<div className={classes.TotalPrice}>Total price - {Math.floor(props.totalPrice * 100) / 100}$</div>*/}
