@@ -8,3 +8,8 @@
   margin-top: auto;
   padding: 10px 0;
 }
+
+.TotalPrice {
+  font-weight:bold;
+  padding: 20px;
+}
