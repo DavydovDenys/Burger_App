@@ -12,6 +12,8 @@ const INGREDIENT_PRICES = {
 
 };
 
+
+
 class BurgerBuilder extends Component {
   // рабочая конструкция
   /*constructor(props) {
@@ -27,8 +29,28 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 4
+    totalPrice: 4,
+    orderButton: false
   };
+
+
+
+  checkOrderButton(ingredients) {
+    let order = 0;
+    for (let value of Object.values(ingredients)) {
+      order += value;
+    }
+    this.setState({orderButton: order})
+    /*let sum = Object.keys(ingredients)
+      .map(key => {
+        return ingredients[key];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0)
+    this.setState({orderButton: sum > 0})*/
+  }
+
 
 
   addIngredientHandler = (type) => {
@@ -42,6 +64,7 @@ class BurgerBuilder extends Component {
 
     this.setState({ingredients: updatedIngredients, totalPrice: newPrice})
 
+    this.checkOrderButton(updatedIngredients);
   }
 
   removeIngredientHandler = (type) => {
@@ -56,6 +79,8 @@ class BurgerBuilder extends Component {
       const newPrice = oldPrice - priceMinus;
 
       this.setState({ingredients: updatedIngredients, totalPrice: newPrice})
+
+      this.checkOrderButton(updatedIngredients);
     }
   }
 
@@ -72,7 +97,8 @@ class BurgerBuilder extends Component {
           removeIngredientHandler={this.removeIngredientHandler}
           ingredientAdded={this.addIngredientHandler}
           totalPrice={this.state.totalPrice}
-          disabled={disabled}/>
+          disabled={disabled}
+          order={this.state.orderButton}/>
       </Auxiliary>
 
     );

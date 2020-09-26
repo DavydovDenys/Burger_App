@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from './BuildControls.module.css'
 import BuildControl from "./BuildControl/BuildControl";
+// import {func} from "prop-types";
 
 const controls = [
   {label: 'Salad', type: 'salad', price: 0.5},
@@ -12,9 +13,16 @@ const controls = [
 
 
 
+
 const BuildControls = (props) => {
   return (
     <div className={classes.BuildControls}>
+      {/*выводим цену за товар*/}
+
+      <div className={classes.TotalPrice}>
+        Total price - {props.totalPrice.toFixed(2)}$
+      </div>
+      {/*<p><strong>Total price: {props.totalPrice.toFixed(2)}</strong></p>*/}
       {controls.map(ctr => (
         <BuildControl
           label={ctr.label}
@@ -26,8 +34,10 @@ const BuildControls = (props) => {
       ))}
       {/*выводим цену за товар*/}
       {/*<div className={classes.TotalPrice}>Total price - {Math.floor(props.totalPrice * 100) / 100}$</div>*/}
+      <div>
+        <button disabled={!props.order} className={classes.OrderButton}>Order Now</button>
+      </div>
 
-      <div className={classes.TotalPrice}>Total price - {props.totalPrice.toFixed(1)}$</div>
     </div>
   )
 };
