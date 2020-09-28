@@ -35,7 +35,11 @@ const BuildControls = (props) => {
       {/*выводим цену за товар*/}
       {/*<div className={classes.TotalPrice}>Total price - {Math.floor(props.totalPrice * 100) / 100}$</div>*/}
       <div>
-        <button disabled={!props.order} className={classes.OrderButton}>Order Now</button>
+        <button
+          disabled={!props.order}
+          className={classes.OrderButton}
+          onClick={props.purchasing}
+          >Order Now</button>
       </div>
 
     </div>
